@@ -62,7 +62,7 @@
 - 📣 已向 **近 10 个团队/部门** 完成布道与落地推广
 - 📊 系列方法论文章 ATA **累计阅读 13,000+、点赞 540+**，在线文档阅读近 **5,000**
 - 🌐 公众号文章**累计 1,220+ 点赞、6,900+ 转发、850+ 收藏**，已获得**外部行业关注与交流邀约**
-- 📦 开源为可复用的 Skill，**任何团队都可零成本使用**
+- 📦 开源为可复用的双版本 Skill（`sdd-riper-one-light` + `sdd-riper-one`），**任何团队都可零成本使用**
 
 ---
 
@@ -70,23 +70,49 @@
 
 ### 方式一：使用 Skill（推荐 - 开箱即用）
 
-**Skill 是什么？** 将 SDD-RIPER 协议封装为可执行命令的配置文件，让 AI 自动遵循 RIPER 流程。
+**Skill 是什么？** 将 SDD-RIPER 协议封装为可执行命令的配置文件，让 AI 自动遵循相应工作流。
+
+#### 先选版本
+
+| Skill | 定位 | 适用场景 | 目录 |
+| --- | --- | --- | --- |
+| `sdd-riper-one-light` | **强模型优化版**：短协议壳 + 强控制内核 | `GPT-5.4`、高输入、多轮、高频 coding；保留 `No Spec, No Code` 与 `No Approval, No Execute` | [`skills/sdd-riper-one-light/`](./skills/sdd-riper-one-light/) |
+| `sdd-riper-one` | **标准版**：完整 RIPER 阶段门禁 | 架构设计、复杂重构、跨项目协作、复杂迁移、严格评审 | [`skills/sdd-riper-one/`](./skills/sdd-riper-one/) |
+
+- **默认推荐 `sdd-riper-one-light`**：适合强模型时代的主力工作流。
+- **复杂任务升级到 `sdd-riper-one`**：需要完整 `Research -> Innovate -> Plan -> Execute -> Review` 时使用。
 
 #### 安装步骤
 
 1. **选择你的 AI 平台**
-   - **Claude Desktop / Claude.ai**：复制 [`skills/sdd-riper-one/SKILL.md`](./skills/sdd-riper-one/SKILL.md) 到 Custom Instructions
-   - **Cursor**：将 `SKILL.md` 复制为项目根目录的 `.cursorrules` 文件
-   - **其他 AI Agent**：查看 [完整安装指南](./skills/sdd-riper-one/README.md)
+   - **Claude Desktop / Claude.ai**：复制选定版本的 `SKILL.md` 到 Custom Instructions
+     - Light: [`skills/sdd-riper-one-light/SKILL.md`](./skills/sdd-riper-one-light/SKILL.md)
+     - Standard: [`skills/sdd-riper-one/SKILL.md`](./skills/sdd-riper-one/SKILL.md)
+   - **Cursor**：将选定版本的 `SKILL.md` 复制为项目根目录的 `.cursorrules` 文件
+   - **其他 AI Agent**：查看对应安装指南
+     - Light: [README](./skills/sdd-riper-one-light/README.md)
+     - Standard: [README](./skills/sdd-riper-one/README.md)
 
 2. **验证安装**
 
    ```text
    在 AI 对话中输入：create_codemap
-   如果 AI 识别并执行，说明安装成功 ✅
+   或直接要求先建立/更新 spec 再输出 summary/plan。
+   如果 AI 识别并按协议执行，说明安装成功 ✅
    ```
 
 3. **开始第一个任务**
+
+   `Light` 示例：
+
+   ```text
+   请启用 $sdd-riper-one-light，并先建立/更新最小 spec，给我 summary/plan；获批后再执行：
+   - task=用户登录功能
+   - goal=实现完整的登录流程
+   - requirement=docs/requirements/login.md
+   ```
+
+   `Standard` 示例：
 
    ```text
    create_codemap: mode=project, scope=my-project
@@ -104,7 +130,7 @@
 | `FAST` | 快速修改（小改动） | `FAST: 修改按钮颜色为蓝色` |
 | `DEBUG` | 日志驱动排查 | `DEBUG: log_path=./logs/error.log` |
 
-📖 **完整文档**：[Skill 使用指南](./skills/sdd-riper-one/README.md)
+📖 **完整文档**：[`Light` 使用指南](./skills/sdd-riper-one-light/README.md) ｜ [`Standard` 使用指南](./skills/sdd-riper-one/README.md)
 
 ---
 
