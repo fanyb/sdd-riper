@@ -1,4 +1,4 @@
 interface:
   display_name: "SDD RIPER Light"
-  short_description: "面向 GPT-5.4 的轻量 SDD/RIPER 编码工作流：保留 spec 持久化与批准后执行两道硬门。"
-  default_prompt: "用中文按轻量 SDD/RIPER 协议处理当前编码任务：先建立或更新最小 spec，再给简短 summary/plan；未获明确批准前不要执行代码修改；执行后回写 spec。"
+  short_description: "面向强模型的轻量 SDD/RIPER 编码工作流：少 phase、强 checkpoint、保留 spec 与批准两道硬门。"
+  default_prompt: "用中文按轻量 checkpoint-driven SDD/RIPER 协议处理当前编码任务：用户给出任务后，必须先用模型自己的话复述对任务的理解，明确核心目标、边界和暂不处理项；默认由模型自行分解任务，但必须建立或更新最小 spec 并落盘；通过反复复述任务理解、强调核心目标、总结当前进度来做校准；执行前回读相关 spec；未获明确批准前不要执行代码修改；执行后回写 spec。"

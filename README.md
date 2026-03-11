@@ -76,7 +76,7 @@
 
 | Skill | 定位 | 适用场景 | 目录 |
 | --- | --- | --- | --- |
-| `sdd-riper-one-light` | **强模型优化版**：短协议壳 + 强控制内核 | `GPT-5.4`、高输入、多轮、高频 coding；保留 `No Spec, No Code` 与 `No Approval, No Execute` | [`skills/sdd-riper-one-light/`](./skills/sdd-riper-one-light/) |
+| `sdd-riper-one-light` | **强模型优化版**：checkpoint-driven + 强控制内核 | `GPT-5.4`、高输入、多轮、高频 coding；核心工作流是先复述任务理解、再强调核心目标、持续总结进度，并保留 `No Spec, No Code` 与 `No Approval, No Execute` | [`skills/sdd-riper-one-light/`](./skills/sdd-riper-one-light/) |
 | `sdd-riper-one` | **标准版**：完整 RIPER 阶段门禁 | 架构设计、复杂重构、跨项目协作、复杂迁移、严格评审 | [`skills/sdd-riper-one/`](./skills/sdd-riper-one/) |
 
 - **默认推荐 `sdd-riper-one-light`**：适合强模型时代的主力工作流。
@@ -97,7 +97,7 @@
 
    ```text
    在 AI 对话中输入：create_codemap
-   或直接要求先建立/更新 spec 再输出 summary/plan。
+   或直接要求先复述任务理解，再建立/更新最小 spec，并输出 checkpoint。
    如果 AI 识别并按协议执行，说明安装成功 ✅
    ```
 
@@ -106,7 +106,7 @@
    `Light` 示例：
 
    ```text
-   请启用 $sdd-riper-one-light，并先建立/更新最小 spec，给我 summary/plan；获批后再执行：
+   请启用 $sdd-riper-one-light，并先用你自己的话复述对任务的理解，明确核心目标、边界和暂不处理项；然后建立/更新最小 spec，给我 checkpoint；获批后再执行：
    - task=用户登录功能
    - goal=实现完整的登录流程
    - requirement=docs/requirements/login.md
