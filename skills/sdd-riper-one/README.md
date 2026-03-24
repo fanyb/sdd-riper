@@ -6,15 +6,28 @@ SDD-RIPER ONE Skill（Spec 驱动研发）。
 
 `Research -> (Innovate, 可选) -> Plan -> (Plan Approved) -> Execute -> Review`
 
+## 工作方式优先
+
+这个仓库更推荐把 `sdd-riper-one` 当成一种**工作方式**来使用，而不是当成一组必须死记硬背的显式命令。
+
+最重要的不是先记住 `create_codemap`、`build_context_bundle`、`sdd_bootstrap` 这些名字，而是先形成下面这套默认习惯：
+
+- `No Spec, No Code`
+- `No Approval, No Execute`
+- `Spec is Truth`
+- 先形成最小 spec / summary / checkpoint，再进入执行
+- 复杂任务走完整阶段门禁，小任务也不能裸改
+
+显式命令是能力接口，不是唯一入口。真正该让团队先学会的，是**先收敛任务，再批准执行**。
+
 ## TL;DR（30 秒上手）
 
 - 总纲：`Pre-Research -> RIPER`，全程遵循 SDD 并维护 Spec。
-- 先记住一句话：`No Spec, No Code`。
-- 中大型任务走标准流：`create_codemap -> build_context_bundle -> sdd_bootstrap`，其中 `sdd_bootstrap` 是 RIPER 启动命令（进入 `Research` 第一步）。
-- 小任务走快速流：先用 `sdd_bootstrap` 启动 RIPER，再按需补输入。
-- 多项目任务建议在父目录作为 `workdir` 运行，并先声明 `active_project` 做局部执行。
+- 先记住三句话：`No Spec, No Code`、`No Approval, No Execute`、`Spec is Truth`。
+- 不要一开始就要求直接改代码；先让模型形成最小 spec、summary 或 checkpoint。
+- 中大型任务默认走完整阶段门禁；小任务也先收敛目标、范围、约束与验证方式。
+- 显式命令是补充接口，不是主入口；你给口述需求、文档、聊天记录都可以启动。
 - 只要你没明确回复 `Plan Approved`，就不应该进入 `Execute`。
-- 你给口述需求也能启动；文档/图片/聊天记录只会让首版 spec 更完整。
 
 ## 使用策略（团队标准）
 
@@ -23,7 +36,25 @@ SDD-RIPER ONE Skill（Spec 驱动研发）。
 - **MCP**：可选提效，不是必需依赖。
 - **底线**：`No Spec, No Code` + `Plan Approved` 前不得改代码。
 
-## 推荐流程（给使用者直接照着跑）
+### 推荐的最小启动方式
+
+给 agent 任务时，优先说明：
+
+- `目标`
+- `范围`
+- `约束`
+- `验证方式`
+
+然后要求它：
+
+- 先收敛任务理解
+- 先建立最小 spec / summary
+- 先给下一步计划与风险
+- 等你批准后再进入执行
+
+如果团队先学会的是这套工作方式，而不是某一条具体 prompt，后续无论换模型、换工具还是换执行入口，都更稳定。
+
+## 推荐流程（工作方式视角）
 
 - 标准流（中大型任务）：
   - `create_codemap -> build_context_bundle -> sdd_bootstrap -> Research -> (Innovate, 可选) -> Plan -> Execute -> Review`
@@ -80,15 +111,30 @@ SDD-RIPER ONE Skill（Spec 驱动研发）。
 2. `build_context_bundle`（把需求文档/图片/记录汇总成可研究上下文）
 3. `sdd_bootstrap`（基于 codemap + context 启动首版 spec，并进入 Research）
 
-## 一键启动（快速流，适合小任务/信息不全）
+## 最小启动示例（示意，不是唯一入口）
 
-在会话中直接输入：
+如果你需要给团队一个最小示例，建议给这种“工作方式模板”，而不是让大家先背整套动作名：
+
+```text
+请使用 sdd-riper-one 先收敛任务，不要直接改代码。
+先给我：
+- 你对任务的理解
+- 最小 spec / summary
+- 下一步计划
+- 风险
+- 验证方式
+我批准后再执行。
+```
+
+如果你需要显式调用内置动作，再使用下面这些命令式示例。
+
+在会话中可直接输入：
 
 ```text
 请启用 $sdd-riper-one，并执行 sdd_bootstrap：
-- task=外部分享审批与时效管控
+- task=资源访问审批与时效控制
 - goal=支持审批授权与时效控制
-- requirement=docs/prd/external_share.md
+- requirement=docs/prd/sample_approval.md
 若已有 codemap/context 可一并引用；没有也先继续并列出待补充项。
 ```
 
@@ -124,6 +170,12 @@ SDD-RIPER ONE Skill（Spec 驱动研发）。
 7. **Archive**：任务收口后归档 spec/codemap，生成可汇报的 human 文档与可复用的 llm 文档。
 
 补充：首版 spec 只需覆盖 Research 最小章节，Plan/Execute/Review 章节按阶段补齐。
+
+## 说明
+
+- README 负责说明默认工作方式与常见启动路径。
+- `create_codemap`、`build_context_bundle`、`sdd_bootstrap`、`review_spec`、`review_execute` 等名字，是 skill 提供的能力接口。
+- 推荐先让团队掌握“如何工作”，再去记忆“具体叫什么”。
 
 ## archive 自动化（脚本）
 
