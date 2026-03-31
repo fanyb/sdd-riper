@@ -19,8 +19,11 @@ description: 面向 GPT-5.4 等强模型的轻量 spec-driven / checkpoint-drive
 - `No Spec, No Code`：未形成或更新最小 spec 前，不进入代码实现。
 - `No Approval, No Execute`：未得到明确执行许可，不进入实现或高影响变更。
 - `Restate First`：用户输入任务后，先用模型自己的话复述理解，再进入 spec 或计划。
+- `Core Goal as Loop Anchor`：阶段性核心目标是当前 loop 的唯一锚点；进入执行前、发生偏差后、完成验证时，都必须重新对齐该锚点。
 - `Checkpoint Before Execute`：实现前必须给一次短 checkpoint，确认理解、目标、下一步、风险与验证方式。
+- `Done by Evidence`：完成应由验证结果与外部反馈证明，而不是由模型自行宣布。
 - `Reverse Sync`：执行后必须把结果、偏差、验证结论回写 spec。
+- `Resume Ready`：长任务或暂停前，应在 spec 中留下最小恢复锚点，支持重启与交接。
 
 ## 默认假设
 
@@ -61,9 +64,11 @@ description: 面向 GPT-5.4 等强模型的轻量 spec-driven / checkpoint-drive
 
 - 用户给出任务后，先复述模型自己的理解，确保核心目标强一致。
 - 用最小 spec 固化目标、边界、事实、计划与结论，并尽快落盘。
+- 在 spec 中用 1-3 行写清 `Done Contract`：什么算完成、由什么证明、哪些情况算仍未完成。
 - 实现前给一次短 checkpoint：`当前理解`、`核心目标`、`下一步 1-3 个动作`、`风险`、`验证方式`。
+- 若测试、日志、人工反馈暴露出偏差，先基于外部证据重述“当前核心目标是否变化、还差什么”，再决定继续执行还是调整方案。
 - 用户明确批准后执行；若范围或方案变化，先更新 spec 再重新请求批准。
-- 执行后回写 `Change Log / Validation`。
+- 执行后回写 `Change Log / Validation / Resume or Handoff`，并说明“当前核心目标是否已由证据证明完成；若未完成，下一轮核心目标是什么”。
 
 ## 何时暂停
 
@@ -88,4 +93,6 @@ description: 面向 GPT-5.4 等强模型的轻量 spec-driven / checkpoint-drive
 - 默认短输出，不复述完整协议。
 - 优先给“当前理解 + 核心目标 + spec 摘要 + 下一步 + 必要风险”。
 - 不强制打印阶段状态机。
+- 核心目标采用“事件触发式复述”：阶段开始、执行前 checkpoint、偏差暴露后、阶段收尾时必须重对齐；其他轮次不机械复读。
+- 需要长链路推进时，优先给最小 `Done Contract` 与 `Resume/Handoff`，而不是扩写长计划。
 - 小任务用 `micro-spec + micro-summary`；复杂任务再按需展开。
