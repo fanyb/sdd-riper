@@ -118,12 +118,12 @@
 
 README 负责说明默认工作方式；真正的协议约束以 `SKILL.md` 为准。
 
-## 脱敏示例
+## 虚构示例
 
-仓库内提供了 3 份脱敏后的真实案例，分别对应：
+仓库内提供了 3 份虚构/合成示例，分别对应：
 
 - `standard spec`：[examples/specs/spec-standard-security-status-race.md](examples/specs/spec-standard-security-status-race.md)
 - `light spec`：[examples/specs/spec-light-runtime-compat.md](examples/specs/spec-light-runtime-compat.md)
 - `feature codemap`：[examples/codemap/codemap-feature-content-control.md](examples/codemap/codemap-feature-content-control.md)
 
-这些示例保留了真实任务中的问题形态、分析结构和闭环方式，但移除了内部项目、类名、路径与日志标识。
+这些示例用于模拟常见任务中的问题形态、分析结构和闭环方式，不对应任何具体组织、业务系统或在用项目。
