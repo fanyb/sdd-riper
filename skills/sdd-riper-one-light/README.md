@@ -1,10 +1,10 @@
 # sdd-riper-one-light
 
-面向 `GPT-5.4` 等强模型的轻量 SDD / RIPER coding skill，也是本仓库主推的日常 AI Agent Harness。
+面向 `GPT-5.4` 等强模型的轻量 SDD / RIPER coding skill，也是日常 AI Agent Harness。
 
-它不是把原版弱化，也不是只给熟练用户的“进阶版”。它代表大模型时代的默认工作方式：承认模型已经从“助手”变成事件推进的主体，允许它自己分解、探索和执行；人类通过 Checkpoint、Approval、Validation 与 Reverse Sync 控制边界和节奏。
+它不是把原版弱化，也不是只给熟练用户的“进阶版”。它代表强模型时代的默认工作方式：承认模型已经从“助手”变成事件推进的主体，允许它自己分解、探索和执行；人类通过 Checkpoint、Approval、Validation 与 Reverse Sync 控制边界和节奏。
 
-如果说强模型是赛道上的主力，`sdd-riper-one-light` 就是让骑手和马协同工作的 Harness：模型负责速度、探索和推进，人类负责方向、风险、节奏和验收。
+如果说强模型是赛道上的主力，`sdd-riper-one-light` 就是让骑手和模型协同工作的 Harness：模型负责速度、探索和推进，人类负责方向、风险、节奏和验收。
 
 它把重点从“强制 phase 展开”切到“强制 checkpoint 校准”：
 
@@ -122,12 +122,12 @@
 
 README 负责说明默认工作方式；真正的协议约束以 `SKILL.md` 为准。
 
-## 虚构示例
+## 脱敏示例
 
-仓库内提供了 3 份虚构/合成示例，分别对应：
+仓库内提供了 3 份脱敏后的真实案例，分别对应：
 
 - `standard spec`：[examples/specs/spec-standard-security-status-race.md](examples/specs/spec-standard-security-status-race.md)
 - `light spec`：[examples/specs/spec-light-runtime-compat.md](examples/specs/spec-light-runtime-compat.md)
 - `feature codemap`：[examples/codemap/codemap-feature-content-control.md](examples/codemap/codemap-feature-content-control.md)
 
-这些示例用于模拟常见任务中的问题形态、分析结构和闭环方式，不对应任何具体组织、业务系统或在用项目。
+这些示例保留了真实任务中的问题形态、分析结构和闭环方式，但移除了内部项目、类名、路径与日志标识。

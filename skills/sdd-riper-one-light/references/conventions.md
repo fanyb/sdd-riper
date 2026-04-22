@@ -1,6 +1,6 @@
 # Conventions Reference
 
-仅在需要落盘 spec / codemap 时查看。  
+仅在需要落盘 spec / codemap 时查看。
 本文件不是常驻协议，不应在每轮任务中重复注入。
 
 ## 时间前缀
